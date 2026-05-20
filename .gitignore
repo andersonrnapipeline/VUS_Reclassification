@@ -41,7 +41,7 @@ Preliminary_data_generation_Plan1*.pdf
 !results/metrics/roc_data.pkl
 !results/metrics/feature_importance.pkl
 !results/plots/*.png
-!results/VUS_Reclassification_Validation_Report.pdf
+results/VUS_Reclassification_Validation_Report.pdf
 !data/feature_matrix.csv
 !data/feature_cols.txt
 !data/s1_vus.csv
