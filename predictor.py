@@ -58,6 +58,19 @@ class VUSPredictor:
 
     # ── Model loading ─────────────────────────────────────────────────────────
 
+    @staticmethod
+    def _patch_model_compat(model):
+        """Patch sklearn <1.4 pickled models to work with sklearn >=1.4.
+        sklearn 1.4 added monotonic_cst to DecisionTreeClassifier; models
+        pickled before that lack the attribute and crash on predict_proba."""
+        from sklearn.pipeline import Pipeline
+        from sklearn.ensemble import RandomForestClassifier
+        clf = model.named_steps['clf'] if isinstance(model, Pipeline) else model
+        if isinstance(clf, RandomForestClassifier):
+            for tree in clf.estimators_:
+                if not hasattr(tree, 'monotonic_cst'):
+                    tree.monotonic_cst = None
+
     def _load_models(self):
         all_path  = os.path.join(MODELS_DIR, 'all_models.pkl')
         best_path = os.path.join(MODELS_DIR, 'best_model.pkl')
@@ -69,6 +82,8 @@ class VUSPredictor:
                 best = pickle.load(f)
             self.models = {best['name']: {'model': best['model'],
                                           'feature_cols': best['feature_cols']}}
+        for data in self.models.values():
+            self._patch_model_compat(data['model'])
         self.feature_cols = list(self.models.values())[0]['feature_cols']
 
     def _load_imputation_stats(self):

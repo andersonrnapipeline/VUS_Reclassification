@@ -549,10 +549,8 @@ Labels: "Upgraded 3→4/5" = LP/P (n=90); "No change" = negative (n=88).
   expert review, not as standalone decisions.
 - RNA data was obtained under specific lab conditions (minigene assay);
   patient-derived cell results may differ.
-- Model trained on BRCA1/2, MLH1, MSH2/6 predominantly; performance
-  on other genes is unknown.
+- Model trained on NF1, TSC2, TSC1 and other rare disease genes; performance
+  on genes not represented in the training set is unknown.
 - gnomAD LOEUF and GTEx fetch require internet access.
 """)
 
-    st.header('Contact')
-    st.markdown('jana100022@gmail.com')
