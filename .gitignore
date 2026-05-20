@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# Large data files (keep CSVs, exclude Excel + cache)
+data/*.json
+data/external_cache.json
+*.xlsx
+*.xls
+
+# Temporary / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+/tmp/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+
+# PDF papers / brochures (keep the generated report)
+Birac_pilot_design_may16.pdf
+Preliminary_data_generation_Plan1*.pdf
+1-s2.0-*.pdf
+1-s2.0-*.xlsx
+
+# Keep these tracked
+!results/metrics/best_model.pkl
+!results/metrics/all_models.pkl
+!results/metrics/imputation_stats.pkl
+!results/metrics/*.csv
+!results/metrics/roc_data.pkl
+!results/metrics/feature_importance.pkl
+!results/plots/*.png
+!results/VUS_Reclassification_Validation_Report.pdf
+!data/feature_matrix.csv
+!data/feature_cols.txt
+!data/s1_vus.csv
+!data/s2_insilico.csv
